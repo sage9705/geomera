@@ -1,0 +1,14 @@
+{
+  "name": "geomera",
+  "version-string": "0.1.0",
+  "builtin-baseline": "c82f74667287d3dc386bce81e44964370c91a289",
+  "dependencies": [
+    "eigen3",
+    "gtest",
+    "benchmark",
+    "cli11",
+    "nlohmann-json",
+    "spdlog",
+    "tl-expected"
+  ]
+}
