@@ -1,0 +1,39 @@
+BasedOnStyle: Google
+Language: Cpp
+Standard: c++20
+
+IndentWidth: 4
+ColumnLimit: 100
+UseTab: Never
+
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<geomera/'
+    Priority: 1
+  - Regex: '^<.*\.hpp>'
+    Priority: 2
+  - Regex: '^<.*>'
+    Priority: 3
+
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLoopsOnASingleLine: false
+AllowShortBlocksOnASingleLine: Empty
+
+BreakBeforeBraces: Attach
+PointerAlignment: Left
+ReferenceAlignment: Left
+SpaceAfterCStyleCast: false
+SpaceBeforeParens: ControlStatements
+
+SortIncludes: CaseInsensitive
+SortUsingDeclarations: Lexicographic
+
+NamespaceIndentation: None
+FixNamespaceComments: true
+
+AlignAfterOpenBracket: Align
+BinPackArguments: false
+BinPackParameters: false
+PackConstructorInitializers: NextLine
+BreakConstructorInitializers: BeforeColon
