@@ -5,6 +5,7 @@
 
 #include <filesystem>
 #include <istream>
+#include <ostream>
 
 namespace geomera {
 
@@ -13,5 +14,15 @@ namespace geomera {
 
 [[nodiscard]] Result<TriMesh> readObj(std::istream& is);
 [[nodiscard]] Result<TriMesh> readObj(const std::filesystem::path& path);
+
+[[nodiscard]] Result<void> writeObj(
+    std::ostream& os,
+    const TriMesh& mesh
+);
+
+[[nodiscard]] Result<void> writeObj(
+    const std::filesystem::path& path,
+    const TriMesh& mesh
+);
 
 }
