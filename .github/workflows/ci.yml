@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update vcpkg
-        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT checkout 3cd21e48a75f67acfef289da52893ce79144aaa1
+        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT reset --hard 3cd21e48a75f67acfef289da52893ce79144aaa1
 
       - name: Install Clang
         if: matrix.compiler == 'clang'
@@ -84,7 +84,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update vcpkg
-        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT checkout 3cd21e48a75f67acfef289da52893ce79144aaa1
+        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT reset --hard 3cd21e48a75f67acfef289da52893ce79144aaa1
 
       - name: Install tools
         run: |
@@ -113,7 +113,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Update vcpkg
-        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT checkout 3cd21e48a75f67acfef289da52893ce79144aaa1
+        run: git -C $VCPKG_ROOT fetch origin && git -C $VCPKG_ROOT reset --hard 3cd21e48a75f67acfef289da52893ce79144aaa1
 
       - name: Install tools
         run: |
