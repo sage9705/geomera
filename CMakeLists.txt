@@ -53,6 +53,7 @@ target_link_libraries(geomera_test_support PUBLIC
 
 add_executable(geomera_tests
     tests/unit/placeholder_test.cpp
+    tests/unit/mesh_test.cpp
 )
 target_link_libraries(geomera_tests PRIVATE
     geomera_test_support
