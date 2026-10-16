@@ -22,7 +22,9 @@ Vec3 faceNormalUnnormalized(const TriMesh& mesh, Index faceIndex) {
     const Vec3& v0 = mesh.vertices[f[0]];
     const Vec3& v1 = mesh.vertices[f[1]];
     const Vec3& v2 = mesh.vertices[f[2]];
-    return (v1 - v0).cross(v2 - v0);
+    const Vec3 e1 = v1 - v0;
+    const Vec3 e2 = v2 - v0;
+    return e1.cross(e2);
 }
 
 double faceArea(const TriMesh& mesh, Index faceIndex) {

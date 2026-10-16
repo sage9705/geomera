@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <limits>
 #include <vector>
-#include <Eigen/Core>
+#include <Eigen/Geometry>
 
 namespace geomera {
 
