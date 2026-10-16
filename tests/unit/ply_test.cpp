@@ -1,4 +1,6 @@
+#include <geomera/measurements.hpp>
 #include <geomera/ply.hpp>
+#include <primitives.hpp>
 
 #include <cstdint>
 #include <cstring>
@@ -393,6 +395,67 @@ TEST(PlyTest, ErrorFaceLessThanThreeVertices) {
     auto res = readPly(stream);
     ASSERT_FALSE(res.has_value());
     EXPECT_EQ(res.error().code, ErrorCode::InvalidMesh);
+}
+
+TEST(PlyTest, WriteAsciiRoundTrip) {
+    const auto box = test::makeBox();
+    std::stringstream ss;
+    PlyWriteOptions options;
+    options.format = PlyFormat::Ascii;
+    const auto writeRes = writePly(ss, box, options);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readPly(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), box.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), box.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(box), 1e-4);
+}
+
+TEST(PlyTest, WriteBinaryLittleEndianRoundTrip) {
+    const auto tetra = test::makeTetrahedron();
+    std::stringstream ss;
+    PlyWriteOptions options;
+    options.format = PlyFormat::BinaryLittleEndian;
+    const auto writeRes = writePly(ss, tetra, options);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readPly(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), tetra.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), tetra.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(tetra), 1e-4);
+}
+
+TEST(PlyTest, WriteBinaryBigEndianRoundTrip) {
+    const auto tetra = test::makeTetrahedron();
+    std::stringstream ss;
+    PlyWriteOptions options;
+    options.format = PlyFormat::BinaryBigEndian;
+    const auto writeRes = writePly(ss, tetra, options);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readPly(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), tetra.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), tetra.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(tetra), 1e-4);
+}
+
+TEST(PlyTest, WriteDoublePrecisionRoundTrip) {
+    const auto box = test::makeBox();
+    std::stringstream ss;
+    PlyWriteOptions options;
+    options.format = PlyFormat::BinaryLittleEndian;
+    options.useDoublePrecision = true;
+    const auto writeRes = writePly(ss, box, options);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readPly(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), box.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), box.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(box), 1e-8);
 }
 
 }  // namespace
