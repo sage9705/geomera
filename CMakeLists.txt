@@ -23,6 +23,7 @@ find_package(benchmark CONFIG REQUIRED)
 
 add_library(geomera_core STATIC
     src/placeholder.cpp
+    src/measurements.cpp
 )
 target_include_directories(geomera_core PUBLIC include)
 target_link_libraries(geomera_core PUBLIC
@@ -54,6 +55,7 @@ target_link_libraries(geomera_test_support PUBLIC
 add_executable(geomera_tests
     tests/unit/placeholder_test.cpp
     tests/unit/mesh_test.cpp
+    tests/unit/measurements_test.cpp
 )
 target_link_libraries(geomera_tests PRIVATE
     geomera_test_support
