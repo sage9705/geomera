@@ -16,6 +16,7 @@
       "name": "dev",
       "inherits": "vcpkg-base",
       "displayName": "Dev (Debug)",
+      "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"

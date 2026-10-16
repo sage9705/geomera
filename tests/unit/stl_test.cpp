@@ -4,7 +4,6 @@
 #include <geomera/stl.hpp>
 #include <primitives.hpp>
 
-#include <cmath>
 #include <cstring>
 #include <filesystem>
 #include <limits>

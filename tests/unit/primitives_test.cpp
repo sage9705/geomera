@@ -1,4 +1,3 @@
-#include <cmath>
 #include <gtest/gtest.h>
 #include <geomera/measurements.hpp>
 #include "primitives.hpp"

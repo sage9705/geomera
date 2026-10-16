@@ -1,9 +1,2 @@
 CompileFlags:
-  Add:
-    - -std=c++20
-    - -Iinclude
-    - -Ibuild/dev/vcpkg_installed/x64-windows/include
-    - -Ibuild/dev/vcpkg_installed/x64-windows/include/eigen3
-    - -Itests/support
-Diagnostics:
-  UnusedIncludes: None
+  CompilationDatabase: build/dev
