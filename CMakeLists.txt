@@ -45,6 +45,7 @@ enable_testing()
 
 add_library(geomera_test_support STATIC
     tests/support/test_helpers.cpp
+    tests/support/primitives.cpp
 )
 target_include_directories(geomera_test_support PUBLIC tests/support)
 target_link_libraries(geomera_test_support PUBLIC
@@ -58,6 +59,7 @@ add_executable(geomera_tests
     tests/unit/measurements_test.cpp
     tests/unit/error_test.cpp
     tests/unit/tolerances_test.cpp
+    tests/unit/primitives_test.cpp
 )
 target_link_libraries(geomera_tests PRIVATE
     geomera_test_support
