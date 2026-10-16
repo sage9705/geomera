@@ -26,6 +26,7 @@ add_library(geomera_core STATIC
     src/measurements.cpp
     src/stl.cpp
     src/ply.cpp
+    src/obj.cpp
 )
 target_include_directories(geomera_core PUBLIC include)
 target_link_libraries(geomera_core PUBLIC
@@ -64,6 +65,7 @@ add_executable(geomera_tests
     tests/unit/primitives_test.cpp
     tests/unit/stl_test.cpp
     tests/unit/ply_test.cpp
+    tests/unit/obj_test.cpp
 )
 target_link_libraries(geomera_tests PRIVATE
     geomera_test_support
