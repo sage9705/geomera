@@ -9,6 +9,7 @@
     {
       "name": "vcpkg-base",
       "hidden": true,
+      "generator": "Ninja",
       "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
       "binaryDir": "${sourceDir}/build/${presetName}"
     },
@@ -16,7 +17,6 @@
       "name": "dev",
       "inherits": "vcpkg-base",
       "displayName": "Dev (Debug)",
-      "generator": "Ninja",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
@@ -43,8 +43,7 @@
       "inherits": "vcpkg-base",
       "displayName": "CI",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ],
