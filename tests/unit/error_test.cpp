@@ -18,7 +18,7 @@ TEST(ErrorTest, SerializationRoundTrip) {
         err.details = {{"facetIndex", 42}, {"file", "test.stl"}};
 
         const nlohmann::json j = err;
-        EXPECT_EQ(j["code"], geomera::errorCodeToString(code));
+        EXPECT_EQ(j["code"].get<std::string>(), geomera::errorCodeToString(code));
         EXPECT_EQ(j["message"], "Test message for error");
         EXPECT_EQ(j["details"]["facetIndex"], 42);
 
