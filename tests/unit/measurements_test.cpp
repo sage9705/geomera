@@ -1,4 +1,3 @@
-#include <cmath>
 #include <limits>
 #include <gtest/gtest.h>
 #include <geomera/measurements.hpp>
