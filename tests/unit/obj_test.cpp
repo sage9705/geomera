@@ -1,4 +1,6 @@
+#include <geomera/measurements.hpp>
 #include <geomera/obj.hpp>
+#include <primitives.hpp>
 
 #include <sstream>
 #include <string>
@@ -197,6 +199,32 @@ TEST(ObjTest, ErrorMalformedFaceToken) {
     auto res = readObj(stream);
     ASSERT_FALSE(res.has_value());
     EXPECT_EQ(res.error().code, ErrorCode::InvalidMesh);
+}
+
+TEST(ObjTest, WriteRoundTripBox) {
+    const auto box = test::makeBox();
+    std::stringstream ss;
+    const auto writeRes = writeObj(ss, box);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readObj(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), box.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), box.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(box), 1e-4);
+}
+
+TEST(ObjTest, WriteRoundTripTetrahedron) {
+    const auto tetra = test::makeTetrahedron();
+    std::stringstream ss;
+    const auto writeRes = writeObj(ss, tetra);
+    ASSERT_TRUE(writeRes.has_value());
+
+    const auto readRes = readObj(ss);
+    ASSERT_TRUE(readRes.has_value());
+    EXPECT_EQ(readRes->faces.size(), tetra.faces.size());
+    EXPECT_EQ(readRes->vertices.size(), tetra.vertices.size());
+    EXPECT_NEAR(surfaceArea(readRes.value()), surfaceArea(tetra), 1e-4);
 }
 
 }
